@@ -24,7 +24,7 @@ body{
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    border:.125em solid currentColor;
+    border:.125em solid var(--clr-neon);
     border-radius: 10px;
     /* padding: 6px 10px; */
     padding: .25em 1em;
@@ -38,9 +38,11 @@ body{
     inset 0 0 .5em 0 var(--clr-neon);
 
     position: relative;
+    transition: background-color 100ms linear;
 }
 
 .neon-button::before {
+    pointer-events: none;
     content: '';
     position: absolute;
     background: var(--clr-neon);
@@ -50,4 +52,27 @@ body{
     height: 100%;
     transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
     filter: blur(1em);
+    opacity: .5;
+}
+
+.neon-button:hover{
+    background: var(--clr-neon);
+    color: var(--clr-bg);
+    text-shadow: none;
+}
+
+.neon-button::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 2em 1em var(--clr-neon);
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+.neon-button:hover::after{
+    opacity: .6;
 }
